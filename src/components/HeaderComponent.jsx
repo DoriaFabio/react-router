@@ -20,7 +20,7 @@ function HeaderComponent() {
                             <NavLink to={"/contact"} className="nav-link">Contact</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link disabled" aria-disabled="true">Elenco Post</NavLink>
+                            <NavLink to={"posts"} className="nav-link" >Elenco Post</NavLink>
                         </li>
                     </ul>
                 </div>
