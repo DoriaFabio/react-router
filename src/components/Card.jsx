@@ -6,12 +6,12 @@ function Card(
         // title,
         // tags = "Tags non presenti",
         // content = "Descrizione non presente",
-        data
+        data, onDeletePost
     }) {
     return (
         <div className={`card ${style.cardEffect}`}>
             <img
-                src={data.immagine}
+                src={"/" + data.immagine}
                 className={`card-img-top ${style.cardImg}`}
                 alt={data.titolo}
             />
@@ -19,7 +19,10 @@ function Card(
                 <h5 className="card-title">{data.titolo}</h5>
                 <p className="card-text">{data.contenuto}</p>
                 <div className="pb-2">{data.tags.join(", ")}</div>
-                <Link to={`/posts/${data.id}`}></Link>
+                <Link to={`/posts/${data.id}`}>Vedi dettaglio</Link>
+                <button className="mx-2" onClick={onDeletePost}>
+                    Cancella
+                </button>
             </div>
         </div>
     );

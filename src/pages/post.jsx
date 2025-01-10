@@ -22,6 +22,16 @@ function blog() {
           console.log("Finito");
         });
     }
+
+    function deleteItem(e, id) {
+      e.preventDefault();
+      axios.delete(`${apiUrl}/${id}`).then((res) => {
+        console.log(res);
+        console.log(res.data);
+        getData();
+      });
+    }
+
     return (
       <main className="container mb-5 mt-2">
         <h1 className="text-center">Elenco Post</h1>
@@ -35,6 +45,9 @@ function blog() {
                   // title={p.titolo}
                   // content={p.contenuto}
                   // tags={p.tags.join(", ")}
+                  onDeletePost={(e) => {
+                    deleteItem(e, p.id)
+                  }}
                 />
               </div>
             ))
