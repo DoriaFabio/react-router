@@ -7,6 +7,7 @@ import Contact from "./pages/Contact"
 import DefaultLayout from './pages/DefaultLayout'
 import Blog from './pages/post'
 import PostPage from './pages/PostPage'
+import AddPost from './pages/AddPost'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <Route path='/posts'>
             <Route index Component={Blog}></Route>
             <Route path=':id' Component={PostPage}></Route>
+            <Route path='create' Component={AddPost}></Route>
           </Route>
         </Route>
       </Routes>
