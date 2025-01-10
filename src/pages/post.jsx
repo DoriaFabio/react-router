@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Card from "../components/Card"
+import Card from "../components/Card.jsx"
 
 const apiUrl = import.meta.env.VITE_API_URL;
 function Blog() {
@@ -13,7 +13,7 @@ function Blog() {
   }, []);
 
   function getData() {
-    axios.get(apiUrl).then((res) => {
+    axios.get(`${apiUrl}/posts`).then((res) => {
       console.log(res.data);
       setPost(res.data.data);
     })
@@ -27,7 +27,7 @@ function Blog() {
 
   function deleteItem(e, id) {
     e.preventDefault();
-    axios.delete(`${apiUrl}/${id}`).then((res) => {
+    axios.delete(`${apiUrl}/posts/${id}`).then((res) => {
       console.log(res);
       console.log(res.data);
       getData();
