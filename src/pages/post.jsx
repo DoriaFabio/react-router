@@ -26,12 +26,18 @@ function Blog() {
   }
 
   function deleteItem(e, id) {
-    e.preventDefault();
     axios.delete(`${apiUrl}/posts/${id}`).then((res) => {
       console.log(res);
       console.log(res.data);
       getData();
-    });
+    })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        console.log("Finito");
+      })
+      ;
   }
 
   return (
@@ -54,7 +60,7 @@ function Blog() {
             </div>
           ))
           : "Non ci sono post"}
-          <div className="col-12 py-4 d-flex justify-content-center">
+        <div className="col-12 py-4 d-flex justify-content-center">
           <Link to="/posts/create" className="btn btn-success">Aggiungi nuovo post</Link>
         </div>
       </div>

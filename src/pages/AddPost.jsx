@@ -52,7 +52,7 @@ function AddPost() {
         });
     }
 
-    function AddPosts(e) {
+    function Add(e) {
         e.preventDefault();
         axios.post(apiUrl + "/posts", formData).then((res) => {
             console.log(res.data);
@@ -70,7 +70,7 @@ function AddPost() {
     return (
         <section className="my-4 container">
             <h2>Aggiungi nuovo post</h2>
-            <form onSubmit={AddPosts}>
+            <form onSubmit={Add}>
                 <div className="mb-3">
                     <label htmlFor="titolo" className="form-label">
                         Titolo
