@@ -1,6 +1,9 @@
-import { useState, useEffect } from "react";
+//? importo le pagine da utilizzare e le proprietà
+import { useState, useContext } from "react";
+import { useAlertContext } from "../context/AlertContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { GlobalContext } from "../context/GlobalContext";
 
 const newPost = {
     titolo: "",
@@ -8,30 +11,16 @@ const newPost = {
     contenuto: "",
     tags: [],
 };
-
+//? importo l'Url della api tramite il file .env
 const apiUrl = import.meta.env.VITE_API_URL;
+
 function AddPost() {
     const [formData, setFormData] = useState(newPost);
-    const [tagsList, setTagsList] = useState([]);
+    const { setAlertData } = useAlertContext();
+    const { tagsList } = useContext(GlobalContext);
     const Navigate = useNavigate();
 
-    useEffect(() => {
-        getTags();
-    }, []);
-
-    function getTags() {
-        axios.get(apiUrl + "/tags").then((res) => {
-            console.log(res.data);
-            setTagsList(res.data.data);
-        })
-            .catch((error) => {
-                console.log(error);
-            })
-            .finally(() => {
-                console.log("Finito");
-            });
-    }
-
+    //! Funzione per assegnare un value all'input
     function handleInput(e) {
         const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
         setFormData({ ...formData, [e.target.name]: value });
@@ -51,11 +40,18 @@ function AddPost() {
             };
         });
     }
-
+    //! Chiamata Axios per aggiungere un post all'array iniziale
     function Add(e) {
         e.preventDefault();
         axios.post(apiUrl + "/posts", formData).then((res) => {
             console.log(res.data);
+            const id = res.data.id;
+            setAlertData(
+                {
+                    type: "success",
+                    message: `Il post con id ${id} è stata salvata`
+                }
+            );
             Navigate("/posts");
         })
             .catch((error) => {
@@ -66,7 +62,7 @@ function AddPost() {
             });
         setFormData(newPost);
     }
-
+    //! Creazione del form
     return (
         <section className="my-4 container">
             <h2>Aggiungi nuovo post</h2>
