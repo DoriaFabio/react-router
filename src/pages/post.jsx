@@ -35,7 +35,7 @@ function Blog() {
         console.log(error);
       })
       .finally(() => {
-        console.log("Finito");
+        console.log("finally");
       })
       ;
   }
@@ -49,9 +49,9 @@ function Blog() {
             <div className="col-12 col-md-6 col-lg-4" key={p.id}>
               <Card
                 data={p}
-                // image={p.immagine}
-                // title={p.titolo}
-                // content={p.contenuto}
+                // immagine={p.immagine}
+                // titolo={p.titolo}
+                // contenuto={p.contenuto}
                 // tags={p.tags.join(", ")}
                 onDeletePost={(e) => {
                   deleteItem(e, p.id)
