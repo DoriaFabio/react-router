@@ -45,3 +45,17 @@ Creiamo il frontend del nostro Blog e le sue pagine!
 - Centralizzare la Navbar grazie a un Componente  Layout
 - Gestire la classe active
 - aggiungere una rotta con id dinamico e recuperare dal componente l'id del post
+
+# Consegna
+Completiamo il nostro routing con l’aggiunta delle pagine di dettaglio!
+- Creiamo in header la barra di navigazione
+- Facciamo quindi in modo da raggiungere la pagina di dettaglio del singolo post e la pagina per creare un nuovo post
+Nella nostra app deve essere possibile
+- Visualizzare la lista dei post
+- Vedere il singolo post
+- Cancellare il singolo post
+- Creare un nuovo post
+# Bonus:
+- Proviamo a inserire nella pagina di creazione una navigazione programmatica che ci consenta di andare al post appena salvato o  alla pagina con la lista dei posts
+- Inseriamo nelle rotte una fallbackroute (404 notfound) con componente dedicato
+- Inseriamo un componente loader che appaia al caricamento dei post o al salvataggio di un post
